@@ -5,7 +5,7 @@ class Database
   attr_reader :data
 
   def add_to_database(item)
-    item_name = item.name.to_s
+    item_name = item.class.to_s
     if @data.keys.include?(item_name)
       @data[item_name].append(item)
     else
