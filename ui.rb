@@ -40,8 +40,8 @@ module UI
     case input
     when 1
       list_type("Book")
-    when 8
-      nil
+    when 5
+      create_new_book(@database_object)
     end
   end
 end
