@@ -1,6 +1,6 @@
 require_relative 'ui'
 require './database'
-require './book_logic.rb'
+require './book_logic'
 
 class App
   def initialize()

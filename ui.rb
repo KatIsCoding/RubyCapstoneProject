@@ -12,17 +12,17 @@ module UI
   def print_properties(object)
     properties = object.instance_variables
     properties.each do |prop|
-      puts prop.to_s.delete("@").sub('_',' ').capitalize + ": " + object.instance_variable_get(prop).to_s
+      puts "#{prop.to_s.delete('@').sub('_', ' ').capitalize}: #{object.instance_variable_get(prop)}"
     end
   end
 
   def list_type(type)
-    puts "Printing all the objects of type " + type 
+    puts "Printing all the objects of type #{type}"
     @database_object.get_items(type).each_with_index do |item, idx|
-      puts "========="
-      puts (idx + 1).to_s + ". Object properties: "
+      puts '========='
+      puts "#{idx + 1}. Object properties: "
       print_properties(item)
-      puts "========="
+      puts '========='
     end
   end
 
@@ -39,7 +39,7 @@ module UI
   def handle_input(input)
     case input
     when 1
-      list_type("Book")
+      list_type('Book')
     when 5
       create_new_book(@database_object)
     end

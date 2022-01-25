@@ -1,7 +1,7 @@
 require './item'
 
 class Book < Item
-  def initialize(archived: false, date:, publisher:, cover_state:)
+  def initialize(date:, publisher:, cover_state:, archived: false)
     super(id: rand(1000), archived: archived, date: date)
     @publisher = publisher
     @cover_state = cover_state
