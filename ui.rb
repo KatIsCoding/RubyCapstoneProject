@@ -27,4 +27,8 @@ module UI
       nil
     end
   end
+
+  def list_albums
+    
+  end
 end
