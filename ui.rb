@@ -9,22 +9,39 @@ module UI
     end
   end
 
+  def print_properties(object)
+    properties = object.instance_variables
+    properties.each do |prop|
+      puts "#{prop.to_s.delete('@').sub('_', ' ').capitalize}: #{object.instance_variable_get(prop)}"
+    end
+  end
+
+  def list_type(type)
+    puts "Printing all the objects of type #{type}"
+    @database_object.get_items(type).each_with_index do |item, idx|
+      puts '========='
+      puts "#{idx + 1}. Object properties: "
+      print_properties(item)
+      puts '========='
+    end
+  end
+
   def main_menu
-    print 'Choose an option\n1- List all books\n2- List all music albums'
-    print '3- List all genres'
-    puts '4 - List all books'
-    puts '5- List all authors'
-    puts '6- List all sources'
-    puts '7- Add an item'
-    puts '8- Quit'
+    puts 'Choose an option'
+    puts '1- List all books'
+    puts '2- List all music albums'
+    puts '3- List all genres'
+    puts '4- List all labels'
+    puts '5- Add an item'
+    puts '6- Quit'
   end
 
   def handle_input(input)
     case input
     when 1
-      puts '1'
-    when 8
-      nil
+      list_type('Book')
+    when 5
+      create_new_book(@database_object)
     end
   end
 
