@@ -1,7 +1,6 @@
 require_relative 'ui'
-require './database.rb'
+require './database'
 
 class App
-  database_object = Database.new()
   include UI
 end

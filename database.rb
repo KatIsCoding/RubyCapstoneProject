@@ -2,11 +2,11 @@ class Database
   def initialize()
     @data = {}
   end
-  ::attr_reader :data
+  attr_reader :data
 
   def add_to_database(item)
     item_name = item.name.to_s
-    if @data.keys().include?(item_name)
+    if @data.keys.include?(item_name)
       @data[item_name].append(item)
     else
       @data[item_name] = [item]
@@ -14,11 +14,10 @@ class Database
   end
 
   def get_items(type)
-    if @data.keys().include?(type)
-      return @data[type]
+    if @data.keys.include?(type)
+      @data[type]
     else
-      return []
+      []
+    end
   end
-
-
 end
