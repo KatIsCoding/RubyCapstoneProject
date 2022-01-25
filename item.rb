@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'date'
 
 # Item class
@@ -24,7 +22,7 @@ class Item
   end
 
   def add_label(label_obj)
-    @label =  label_obj
+    @label = label_obj
   end
 
   def can_be_archived?

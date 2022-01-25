@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # UI
 module UI
   def display_ui
