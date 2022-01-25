@@ -35,6 +35,7 @@ module UI
       create_new_book(@database_object)
     when 2
       create_new_album(@database_object)
+    end
   end
 
   def main_menu
