@@ -1,8 +1,8 @@
 require './item'
 
 class Book < Item
-  def initialize(archived:, date:, publisher:, cover_state:, id: rand(1000))
-    super(id, archived, date)
+  def initialize(archived:, date:, publisher:, cover_state:)
+    super(id: rand(1000), archived: archived, date: date)
     @publisher = publisher
     @cover_state = cover_state
   end
