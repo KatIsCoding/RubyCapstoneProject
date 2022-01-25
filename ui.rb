@@ -2,7 +2,7 @@
 module UI
   def display_ui
     input = ''
-    while input != '8'
+    while input != '6'
       main_menu
       input = gets.chomp
       handle_input(input.to_i)
@@ -26,6 +26,17 @@ module UI
     end
   end
 
+  def create_item
+    puts '1- Create book'
+    puts '2- Create music album'
+    create = gets.chomp
+    case create
+    when 1
+      create_new_book(@database_object)
+    when 2
+      create_new_album(@database_object)
+  end
+
   def main_menu
     puts 'Choose an option'
     puts '1- List all books'
@@ -40,12 +51,10 @@ module UI
     case input
     when 1
       list_type('Book')
+    when 2
+      list_type('MusicAlbum')
     when 5
-      create_new_book(@database_object)
+      create_item
     end
-  end
-
-  def list_albums
-    
   end
 end
