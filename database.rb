@@ -6,9 +6,10 @@ class Database
   def initialize()
     @data = {}
     @map = {
-      'Book' => Book
+      'Book' => Book,
       'MusicAlbum' => MusicAlbum
     }
+    @excluded_keys = ['id']
   end
   attr_reader :data
 
@@ -40,19 +41,18 @@ class Database
   def convert_to_json(item)
     temp_item = {}
     properties = item.instance_variables
-    properties.each do |prop| 
-      temp_item[prop.to_s.delete('@')] = item.instance_variable_get(prop)
+    properties.each do |prop|
+      prop_to_evaluate = prop.to_s.delete('@')
+      temp_item[prop_to_evaluate] = item.instance_variable_get(prop) unless @excluded_keys.include?(prop_to_evaluate)
     end
     temp_item
   end
 
   def save_data()
     array_conversion
-    unless File.directory?('./data')
-      Dir.mkdir('./data')
-    end
+    Dir.mkdir('./data') unless File.directory?('./data')
     @data.keys.each do |key|
-      file = File.open('./data/' + key + '.json', 'w')
+      file = File.open("./data/#{key}.json", 'w')
       file.write(@data[key].to_json)
       file.close
     end
@@ -61,18 +61,20 @@ class Database
   def convert_from_json
     json_files = create_types
     json_files.each do |file|
-      items = JSON.parse(File.open('./data/' + file, 'r'))
+      file_object = File.open("./data/#{file}", 'r')
+      items = JSON.parse(file_object.read, { symbolize_names: true })
+      file_object.close
       items.each do |item|
-        @data[file.delete('.json')].append(@map[file.delete('.json')].new(**item))
+        @data[file.sub('.json', '')].append(@map[file.sub('.json', '')].new(**item))
       end
-    end 
+    end
   end
 
   def create_types
     if File.directory?('./data')
       files = Dir.children('./data')
       files.each do |file|
-        @data[file.delete('.json')] = []
+        @data[file.sub('.json', '')] = []
       end
       files
     else

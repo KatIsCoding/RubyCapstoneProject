@@ -1,5 +1,3 @@
-
-
 # UI
 module UI
   def display_ui
@@ -33,9 +31,10 @@ module UI
     puts '2- Create music album'
     create = gets.chomp.to_i
     puts create
-    if create == 1
+    case create
+    when 1
       create_new_book(@database_object)
-    elsif create == 2
+    when 2
       create_new_album(@database_object)
     end
   end
