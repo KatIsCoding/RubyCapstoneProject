@@ -1,8 +1,14 @@
+require_relative 'music_album'
+require_relative 'book'
 require 'json'
 
 class Database
   def initialize()
     @data = {}
+    @map = {
+      'Book' => Book
+      'MusicAlbum' => MusicAlbum
+    }
   end
   attr_reader :data
 
@@ -52,4 +58,25 @@ class Database
     end
   end
 
+  def convert_from_json
+    json_files = create_types
+    json_files.each do |file|
+      items = JSON.parse(File.open('./data/' + file, 'r'))
+      items.each do |item|
+        @data[file.delete('.json')].append(@map[file.delete('.json')].new(**item))
+      end
+    end 
+  end
+
+  def create_types
+    if File.directory?('./data')
+      files = Dir.children('./data')
+      files.each do |file|
+        @data[file.delete('.json')] = []
+      end
+      files
+    else
+      []
+    end
+  end
 end
