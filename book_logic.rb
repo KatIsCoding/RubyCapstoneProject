@@ -1,12 +1,6 @@
 require 'date'
 require './book'
 
-def initialize(date:, publisher:, cover_state:, archived: false)
-  super(id: rand(1000), archived: archived, date: date)
-  @publisher = publisher
-  @cover_state = cover_state
-end
-
 def ask_for_params()
   out = {}
   puts 'Please, enter the date of publication of the book in the following format: YYYY/MM/DD'
