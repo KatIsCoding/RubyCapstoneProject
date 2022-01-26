@@ -1,7 +1,7 @@
-require_relative '../music_album.rb'
+require_relative '../music_album'
 require 'date'
 
-describe MusicAlbum do 
+describe MusicAlbum do
   before(:each) do
     @obj = MusicAlbum.new date: '1999/01/01', on_spotify: true
   end
@@ -15,8 +15,7 @@ describe MusicAlbum do
   context 'Test Can_be_archived? Method' do
     it 'Execute Method' do
       @obj.can_be_archived?
-      expect(@obj.instance_variable_get("@archived")).to be(true)
+      expect(@obj.instance_variable_get('@archived')).to be(true)
     end
   end
-
 end

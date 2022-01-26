@@ -1,9 +1,9 @@
-require_relative '../book.rb'
+require_relative '../book'
 require 'date'
 
-describe Book do 
+describe Book do
   before(:each) do
-    @obj = Book.new date: '2022/01/01', publisher: "Me", cover_state: "bad"
+    @obj = Book.new date: '2022/01/01', publisher: 'Me', cover_state: 'bad'
   end
 
   context 'Book instantiation' do
@@ -15,8 +15,7 @@ describe Book do
   context 'Test Can_be_archived? Method' do
     it 'Execute Method' do
       @obj.can_be_archived?
-      expect(@obj.instance_variable_get("@archived")).to be(true)
+      expect(@obj.instance_variable_get('@archived')).to be(true)
     end
   end
-
 end
