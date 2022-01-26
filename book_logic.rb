@@ -4,7 +4,7 @@ require './book'
 def ask_for_params()
   out = {}
   puts 'Please, enter the date of publication of the book in the following format: YYYY/MM/DD'
-  out[:date] = Date.parse(gets.chomp)
+  out[:date] = gets.chomp
   puts 'Please enter the name of the publisher'
   out[:publisher] = gets.chomp
   puts 'Please enter the cover state'

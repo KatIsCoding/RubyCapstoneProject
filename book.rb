@@ -9,6 +9,6 @@ class Book < Item
   end
 
   def can_be_archived?()
-    @archived = super.can_be_archived? || @cover_state == 'bad'
+    @archived = method(:can_be_archived?).super_method.call || @cover_state == 'bad'
   end
 end
