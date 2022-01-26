@@ -33,12 +33,23 @@ class Database
 
   def convert_to_json(item)
     temp_item = {}
-
-    properties = object.instance_variables
+    properties = item.instance_variables
     properties.each do |prop| 
-      temp_item[prop.to_s.delete('@')] = object.instance_variable_get(prop)
+      temp_item[prop.to_s.delete('@')] = item.instance_variable_get(prop)
     end
-
     temp_item
   end
+
+  def save_data()
+    array_conversion
+    unless File.directory?('./data')
+      Dir.mkdir('./data')
+    end
+    @data.keys.each do |key|
+      file = File.open('./data/' + key + '.json', 'w')
+      file.write(@data[key].to_json)
+      file.close
+    end
+  end
+
 end

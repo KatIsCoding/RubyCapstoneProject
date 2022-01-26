@@ -2,10 +2,8 @@ require 'date'
 
 # Item class
 class Item
-  def initialize(id:, archived:, date:)
+  def initialize(id:, date:)
     @id = id
-    @archived = archived
-    # Be always a Date object
     @publish_date = date
   end
 
