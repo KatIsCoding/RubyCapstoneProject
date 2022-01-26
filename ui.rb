@@ -56,6 +56,8 @@ module UI
       list_type('MusicAlbum')
     when 5
       create_item
+    when 6
+      
     end
   end
 end

@@ -1,3 +1,5 @@
+require 'json'
+
 class Database
   def initialize()
     @data = {}
@@ -19,5 +21,24 @@ class Database
     else
       []
     end
+  end
+
+  def array_conversion
+    @data.keys.each do |key|
+      @data[key].each_with_index do |item, index|
+        @data[key][index] = convert_to_json(item)
+      end
+    end
+  end
+
+  def convert_to_json(item)
+    temp_item = {}
+
+    properties = object.instance_variables
+    properties.each do |prop| 
+      temp_item[prop.to_s.delete('@')] = object.instance_variable_get(prop)
+    end
+
+    temp_item
   end
 end
