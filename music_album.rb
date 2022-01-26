@@ -3,17 +3,13 @@ require_relative 'item'
 class MusicAlbum < Item
   attr_reader :on_spotify
 
-  def initialize(id, archived, date, on_spotify)
-    super(id, archived, date)
+  def initialize(archived:, date:, on_spotify:)
+    super(id: rand(1000), archived: archived, date: date)
     @on_spotify = on_spotify
   end
 
   def can_be_archived?
-    if super.can_be_archived? && @on_spotify
-      true
-    else
-      false
-    end
+    super.can_be_archived? && @on_spotify
   end
 
   private :can_be_archived?
