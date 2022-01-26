@@ -2,11 +2,9 @@ require 'date'
 
 # Item class
 class Item
-  def initialize(id:, archived:, date:)
+  def initialize(id:, date:)
     @id = id
-    @archived = archived
-    # Be always a Date object
-    @publish_date = date
+    @date = date
   end
 
   def add_genre(genre_obj)
@@ -27,7 +25,7 @@ class Item
 
   def can_be_archived?
     now = Date.today
-    diff = (now - @publish_date).to_i
+    diff = (now - @date).to_i
     (diff / 365.25).to_i > 10
   end
 

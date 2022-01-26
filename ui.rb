@@ -29,7 +29,8 @@ module UI
   def create_item
     puts '1- Create book'
     puts '2- Create music album'
-    create = gets.chomp
+    create = gets.chomp.to_i
+    puts create
     case create
     when 1
       create_new_book(@database_object)
@@ -56,6 +57,9 @@ module UI
       list_type('MusicAlbum')
     when 5
       create_item
+    when 6
+      @database_object.save_data
+      puts 'Quitting...'
     end
   end
 end
