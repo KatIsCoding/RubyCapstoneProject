@@ -25,7 +25,7 @@ class Item
 
   def can_be_archived?
     now = Date.today
-    diff = (now - @date).to_i
+    diff = (now - Date.parse(@date)).to_i
     (diff / 365.25).to_i > 10
   end
 

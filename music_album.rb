@@ -9,8 +9,6 @@ class MusicAlbum < Item
   end
 
   def can_be_archived?
-    @archived = super.can_be_archived? && @on_spotify
+    @archived = method(:can_be_archived?).super_method.call && @on_spotify
   end
-
-  private :can_be_archived?
 end

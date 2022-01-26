@@ -9,6 +9,6 @@ class Genre
 
   def add_item(item_obj)
     @items.append(item_obj)
-    item.add_genre(self)
+    item_obj.add_genre(self)
   end
 end
