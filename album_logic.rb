@@ -1,11 +1,11 @@
 require 'date'
-require './music_album'
+require_relative 'music_album'
 
 def ask_for_params_album()
   out = {}
   puts 'Please, enter the date of publication of the album in the following format: YYYY/MM/DD'
   out[:date] = Date.parse(gets.chomp)
-  puts 'Is the album on Spotify?'
+  puts 'Is the album on Spotify? [y/n]'
   out[:on_spotify] = gets.chomp == 'y'
   out
 end
