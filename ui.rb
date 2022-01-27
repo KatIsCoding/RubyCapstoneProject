@@ -13,7 +13,6 @@ module UI
     properties = object.instance_variables
     properties.each do |prop|
       puts "#{prop.to_s.delete('@').sub('_', ' ').capitalize}: #{object.instance_variable_get(prop)}"
-      print_properties(*prop) if object.instance_variable_get(prop).instance_of?('Label')
     end
   end
 
