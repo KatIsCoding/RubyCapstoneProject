@@ -13,6 +13,7 @@ module UI
     properties = object.instance_variables
     properties.each do |prop|
       puts "#{prop.to_s.delete('@').sub('_', ' ').capitalize}: #{object.instance_variable_get(prop)}"
+      print_properties(*prop) if object.instance_variable_get(prop).class == 'Label'
     end
   end
 
@@ -55,6 +56,8 @@ module UI
       list_type('Book')
     when 2
       list_type('MusicAlbum')
+    when 4
+      list_type('Label')
     when 5
       create_item
     when 6

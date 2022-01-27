@@ -1,5 +1,7 @@
 require_relative 'music_album'
 require_relative 'book'
+require_relative 'label'
+require_relative 'genre'
 require 'json'
 
 class Database
@@ -7,9 +9,11 @@ class Database
     @data = {}
     @map = {
       'Book' => Book,
-      'MusicAlbum' => MusicAlbum
+      'MusicAlbum' => MusicAlbum,
+      'Label' => Label,
+      'Genre' => Genre
     }
-    @excluded_keys = ['id']
+    @excluded_keys = ['id', 'label', 'genre', 'items']
   end
   attr_reader :data
 

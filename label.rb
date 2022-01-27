@@ -6,8 +6,8 @@ class Label
     @items = []
   end
 
-  def add_item(item_obj)
-    @items.append(item_obj)
-    item_obj.add_label(self)
+  def add_item(item)
+    @items.append(item)
+    item.add_label(self)
   end
 end
