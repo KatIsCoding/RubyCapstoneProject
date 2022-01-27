@@ -2,6 +2,8 @@ require_relative 'ui'
 require './database'
 require_relative 'book_logic'
 require_relative 'album_logic'
+require_relative 'genre_logic'
+require_relative 'label_logic'
 
 class App
   def initialize()

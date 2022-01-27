@@ -5,6 +5,7 @@ class Label
     @color = color
     @items = []
   end
+  attr_reader :id
 
   def add_item(item)
     @items.append(item)

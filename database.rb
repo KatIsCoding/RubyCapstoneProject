@@ -13,7 +13,7 @@ class Database
       'Label' => Label,
       'Genre' => Genre
     }
-    @excluded_keys = ['id', 'label', 'genre', 'items']
+    @excluded_keys = %w[id label genre items]
   end
   attr_reader :data
 

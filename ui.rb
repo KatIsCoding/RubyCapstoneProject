@@ -13,7 +13,7 @@ module UI
     properties = object.instance_variables
     properties.each do |prop|
       puts "#{prop.to_s.delete('@').sub('_', ' ').capitalize}: #{object.instance_variable_get(prop)}"
-      print_properties(*prop) if object.instance_variable_get(prop).class == 'Label'
+      print_properties(*prop) if object.instance_variable_get(prop).instance_of?('Label')
     end
   end
 
@@ -30,6 +30,8 @@ module UI
   def create_item
     puts '1- Create book'
     puts '2- Create music album'
+    puts '3- Create label'
+    puts '4- Create genre'
     create = gets.chomp.to_i
     puts create
     case create
@@ -37,6 +39,10 @@ module UI
       create_new_book(@database_object)
     when 2
       create_new_album(@database_object)
+    when 3
+      create_new_label(@database_object)
+    when 4
+      create_new_genre(@database_object)
     end
   end
 
@@ -56,6 +62,8 @@ module UI
       list_type('Book')
     when 2
       list_type('MusicAlbum')
+    when 3
+      list_type('Genre')
     when 4
       list_type('Label')
     when 5
