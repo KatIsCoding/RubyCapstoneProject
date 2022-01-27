@@ -2,6 +2,8 @@
 
 > An app to catalog things.
 
+![image](https://cdn.discordapp.com/attachments/637141086334222369/936301136225398856/unknown.png)
+
 ## Built using
 
 - Ruby
